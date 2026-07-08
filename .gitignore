@@ -1,0 +1,4 @@
+_tmp/
+.git_roto/
+node_modules/
+*.log

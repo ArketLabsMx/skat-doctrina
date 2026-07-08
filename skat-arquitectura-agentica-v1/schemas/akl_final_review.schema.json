@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arketlabs/contracts/akl_final_review",
+  "title": "AKL Final Review",
+  "description": "Self-review con evidencia obligatoria antes de declarar un deploy/entregable listo. Prueba que el agente EJECUTO los chequeos en vez de afirmarlos por confianza. Aplica a deploy de cliente (ARCIA/MILA/LOBBIE) y a video ads. Clean-room ArketLabs, inspirado en el patron final_review.",
+  "type": "object",
+  "required": ["version", "folio", "target", "status", "checks"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "folio": { "type": "string", "pattern": "^AKL-[0-9]{4}-[A-Z0-9]+-.+$" },
+    "target": {
+      "type": "string",
+      "description": "Que se reviso: path del .mp4, URL del deploy, o id del sistema"
+    },
+    "target_type": { "type": "string", "enum": ["deploy_cliente", "video_ad", "workflow", "migracion"] },
+    "status": {
+      "type": "string",
+      "enum": ["pass", "revise", "fail"],
+      "description": "pass=listo para entregar, revise=arreglable, fail=no procede"
+    },
+    "checks": {
+      "type": "object",
+      "description": "Cada check requerido debe llevar evidencia real (comando corrido, respuesta observada), no una afirmacion.",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["passed", "evidencia"],
+        "properties": {
+          "passed": { "type": "boolean" },
+          "evidencia": {
+            "type": "string",
+            "minLength": 8,
+            "description": "Evidencia concreta: salida de comando, status HTTP, ffprobe, query result. NO 'verificado ok'."
+          },
+          "issues": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "checks_esperados": {
+      "type": "array",
+      "description": "Lista de nombres de check que este target_type DEBE incluir. El validador cruza que todos existan en checks.",
+      "items": { "type": "string" }
+    },
+    "issues_found": { "type": "array", "items": { "type": "string" } },
+    "recommended_action": {
+      "type": "string",
+      "enum": ["entregar_cliente", "publicar_meta", "fix_credenciales", "fix_esquema", "re_render", "block"]
+    },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": false
+}

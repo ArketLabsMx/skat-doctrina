@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arketlabs/contracts/akl_handoff",
+  "title": "AKL Handoff",
+  "description": "Contrato de handoff entre instancias Claude (Web/SKAT, Code, Cowork). Codifica el candado anti-doble-trabajo como dato validado: ningun handoff se emite sin declarar que se leyo el estado vivo. Clean-room, implementacion original ArketLabs.",
+  "type": "object",
+  "required": [
+    "version",
+    "folio",
+    "from_instance",
+    "to_instance",
+    "status",
+    "timestamp",
+    "estado_actual_verificado",
+    "objetivo",
+    "artifacts"
+  ],
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "folio": {
+      "type": "string",
+      "pattern": "^AKL-[0-9]{4}-[A-Z0-9]+-.+$",
+      "description": "Folio ArketLabs, ej. AKL-2026-MILA-cutover-fase1"
+    },
+    "from_instance": { "type": "string", "enum": ["web", "code", "cowork"] },
+    "to_instance": { "type": "string", "enum": ["web", "code", "cowork"] },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "blocked", "awaiting_human", "in_progress"]
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "estado_actual_verificado": {
+      "type": "boolean",
+      "const": true,
+      "description": "Candado anti-doble-trabajo: DEBE ser true. Afirma que se leyo el estado vivo (repo, workflow, tabla) antes de emitir el handoff. Un handoff sin esto no valida."
+    },
+    "verificacion_evidencia": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Que se inspecciono para verificar el estado (repo+commit, tabla Supabase, endpoint). Al menos 1 entrada.",
+      "items": {
+        "type": "object",
+        "required": ["fuente", "hallazgo"],
+        "properties": {
+          "fuente": { "type": "string", "description": "Ej. arcia-landing@a1b2c3d, supabase.mila_prompts" },
+          "hallazgo": { "type": "string", "description": "Que se encontro vivo, para no reconstruirlo" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "objetivo": { "type": "string", "description": "Que debe lograr la instancia receptora, en una frase accionable" },
+    "cliente_id": { "type": "string", "description": "Campo lock: la instancia receptora no lo cambia sin decision_log" },
+    "entorno": {
+      "type": "string",
+      "enum": ["dev", "preview", "production"],
+      "description": "Campo lock: entorno objetivo"
+    },
+    "artifacts": {
+      "type": "object",
+      "description": "Mapa abierto de artifacts producidos/referenciados. Enlazar por *_ref (path/ID) cuando sea grande.",
+      "additionalProperties": true
+    },
+    "decision_log_ref": { "type": "string", "description": "Path/ID al akl_decision_log de esta cadena" },
+    "blockers": {
+      "type": "array",
+      "description": "Presente si status=blocked. Plantilla de escalacion de 5 campos.",
+      "items": {
+        "type": "object",
+        "required": ["intentado", "fallo", "tipo", "opciones", "recomendacion"],
+        "properties": {
+          "intentado": { "type": "string" },
+          "fallo": { "type": "string" },
+          "tipo": {
+            "type": "string",
+            "enum": ["auth", "acceso_proveedor", "bug", "calidad_prompt", "credencial", "esquema", "otro"]
+          },
+          "opciones": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "recomendacion": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": false
+}
