@@ -1,4 +1,6 @@
 _tmp/
 .git_roto/
+_repo.zip
+*.zip
 node_modules/
 *.log

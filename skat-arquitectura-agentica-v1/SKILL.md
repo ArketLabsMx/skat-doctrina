@@ -9,7 +9,7 @@ Doctrina destilada de OpenMontage (AGPLv3 — **patrón sí, código no**; el c�
 
 **Tesis raíz:** la inteligencia vive en las instrucciones (manifiestos + skills), no en el código; el código son herramientas y persistencia. Separa tres capas: **qué existe/cuánto cuesta** (tool registry), **cómo lo usamos aquí** (director-skills), **cómo funciona la tecnología** (vendor skills).
 
-**Recursos incluidos con esta skill** (rutas relativas a esta carpeta): `schemas/akl_*.schema.json` (contratos AKL), `tools/chatsim-precompose-validator.ts` + `tools/static-dm-risk.ts` (gates de video, verificados en verde), `remotion/ChatSimScene.tsx` (motor chat-sim), `references/DOCTRINA-OPENMONTAGE-TRANSFERIBLE.md` (la doctrina completa, 23KB), `references/verify.test.ts` (prueba schemas + tools).
+**Recursos incluidos con esta skill** (rutas relativas a esta carpeta): `schemas/akl_*.schema.json` (contratos AKL), `tools/chatsim-precompose-validator.ts` + `tools/static-dm-risk.ts` (gates de video, verificados en verde), `remotion/ChatSimScene.tsx` (motor chat-sim), `references/DOCTRINA-OPENMONTAGE-TRANSFERIBLE.md` (la doctrina completa, 23KB), `references/verify.test.ts` (prueba schemas + tools). **Generación IA async:** `tools/gateway-client.ts` (patrón submit→poll→normalize + idempotencia, provider-neutral, para Kling/Runway/Veo/etc.) + `registry/model-registry-seed.json` (51 modelos de imagen normalizados a la forma de Regla 5).
 
 **Caso fundacional (por qué existe):** minamos OpenMontage a fondo (2026-07-08) porque corre sobre nuestro mismo motor (Remotion) y su arquitectura entera *es* nuestra doctrina llevada a contratos ejecutables. En vez de re-descubrir gobernanza agéntica caso por caso, la codificamos aquí una vez.
 
@@ -83,6 +83,11 @@ Esta skill es un organismo vivo, no un documento congelado. **Cada vez que una r
 - Contexto: minado a fondo del repo OpenMontage (34.5k★, mismo motor Remotion) en 4 ejes.
 - Aprendizaje: la doctrina de gobernanza agéntica es transferible casi 1:1 a SKAT; el mayor ROI son los contratos de datos AKL.
 - Acción: creada esta skill v1 + bundle clean-room (3 schemas, 2 tools verificados, ChatSimScene). Doctrina completa en `DOCTRINA-OPENMONTAGE-TRANSFERIBLE.md`.
+
+### [2026-07-08] Revisión de open-generative-ai (MIT) — extracción quirúrgica
+- Contexto: repo de generación IA imagen/video (22k★). Aplicada la dinámica review-first + gate barato-antes-de-caro: resultó ser una app sobre un solo gateway (Muapi.ai), no un framework de doctrina → NO ameritó fan-out.
+- Aprendizaje: (1) el patrón universal de generación async es **submit→poll→normalize** — la forma del poll varía por proveedor, normalizar siempre a `{url}`. (2) Un `models_dump` es un tool-registry listo (Regla 5). (3) Bandera de seguridad: gateway-tercero ve prompts/outputs + API key; "uncensored" = riesgo HOUSING; key en localStorage = anti-doctrina.
+- Acción: añadidos `tools/gateway-client.ts` (submit→poll→normalize + idempotencia, 11 tests verde) y `registry/model-registry-seed.json` (51 modelos normalizados a Regla 5). Descartado todo lo demás (UI, Electron, el gateway específico) por no potenciar.
 
 <!-- Próximas entradas aquí. Cuando la bitácora acumule cambios sustantivos, cortar v2. -->
 

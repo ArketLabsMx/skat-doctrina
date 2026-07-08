@@ -1,0 +1,2017 @@
+{
+  "version": "1.0",
+  "capability": "image_generation",
+  "gateway": "muapi",
+  "generated_from": "anil-matcha/open-generative-ai (MIT) — models_dump.json t2i",
+  "security_note": "gateway=tercero que ve prompts/outputs y sostiene API key. Evaluar bajo Guardian de Secretos antes de enrutar creativo de cliente. Key NUNCA en localStorage (usar Vercel env / httpOnly).",
+  "fields_to_populate": "cost_usd, latency_p50_s, quality_score, historical_success_rate se llenan desde logs de ejecucion (Regla 5).",
+  "model_count": 51,
+  "models": [
+    {
+      "id": "nano-banana",
+      "name": "Nano Banana",
+      "provider": "google",
+      "provider_name": "Google",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image, what you want the final edited image to look like."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "3:4",
+            "4:3",
+            "9:16",
+            "16:9",
+            "3:2",
+            "2:3",
+            "5:4",
+            "4:5",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-dev",
+      "name": "Flux Dev",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-dev-lora",
+      "name": "Flux Dev Lora",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "model_id": {
+          "type": "array",
+          "description": "The unique identifier of a LoRA model hosted on Civitai, used by the Flux Dev image generation system. This ID tells Flu"
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-kontext-dev-t2i",
+      "name": "Flux Kontext Dev T2I",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "3:2",
+            "2:3",
+            "21:9",
+            "9:21"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "hidream-i1-fast",
+      "name": "Hidream I1 Fast",
+      "provider": "hidream",
+      "provider_name": "Runware",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "hidream-i1-dev",
+      "name": "Hidream I1 Dev",
+      "provider": "hidream",
+      "provider_name": "Runware",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "hidream-i1-full",
+      "name": "Hidream I1 Full",
+      "provider": "hidream",
+      "provider_name": "Runware",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "ai-anime-generator",
+      "name": "Ai Anime Generator",
+      "provider": "muapi",
+      "provider_name": "Wavespeed",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "wan2.1-text-to-image",
+      "name": "Wan2.1 Text To Image",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-kontext-pro-t2i",
+      "name": "Flux Kontext Pro T2I",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "21:9",
+            "16:21"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-kontext-max-t2i",
+      "name": "Flux Kontext Max T2I",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "21:9",
+            "16:21"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "gpt4o-text-to-image",
+      "name": "Gpt4o Text To Image",
+      "provider": "openai",
+      "provider_name": "OpenAI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "2:3",
+            "3:2"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "enum": [
+            1,
+            2,
+            4
+          ],
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "midjourney-v7-text-to-image",
+      "name": "Midjourney v7 Text To Image",
+      "provider": "midjourney",
+      "provider_name": "Midjourney",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "The prompt to generate the image"
+        },
+        "speed": {
+          "type": "string",
+          "enum": [
+            "relaxed",
+            "fast",
+            "turbo"
+          ],
+          "description": "The speed of which corresponds to different speed of Midjourney"
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "4:3",
+            "1:2",
+            "2:1",
+            "2:3",
+            "3:2",
+            "5:6",
+            "6:5"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "variety": {
+          "type": "int",
+          "description": "Controls the diversity of generated images. Increment by 5 each time. Higher values create more diverse results. Lower v"
+        },
+        "stylization": {
+          "type": "int",
+          "description": "Controls the artistic style intensity. Higher values create more stylized results. Lower values create more realistic re"
+        },
+        "weirdness": {
+          "type": "int",
+          "description": "Controls the creativity and uniqueness. Higher values create more unusual results. Lower values create more conventional"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-schnell",
+      "name": "Flux Schnell",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image. The value must be divisible by 64, eg: 128...512, 576, 640...2048."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "bytedance-seedream-v3",
+      "name": "Bytedance Seedream v3",
+      "provider": "bytedance",
+      "provider_name": "ByteDance",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "4:3"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "qwen-image",
+      "name": "Qwen Image",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "21:9",
+            "9:21",
+            "3:2",
+            "2:3"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-pulid",
+      "name": "Flux Pulid",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image (max 1500 characters)."
+        },
+        "image_url": {
+          "type": "string",
+          "description": "URL of the input image used to generate image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": true,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "ideogram-v3-t2i",
+      "name": "Ideogram v3 T2I",
+      "provider": "ideogram",
+      "provider_name": "Ideogram",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "render_speed": {
+          "type": "string",
+          "enum": [
+            "Turbo",
+            "Balanced",
+            "Quality"
+          ],
+          "description": "The rendering speed to use."
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "Auto",
+            "General",
+            "Realistic",
+            "Design"
+          ],
+          "description": "The style type to generate with."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "3:4",
+            "4:3",
+            "9:16",
+            "16:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "google-imagen4",
+      "name": "Google Imagen4",
+      "provider": "google",
+      "provider_name": "Google",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image, what you want the final edited image to look like."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "google-imagen4-fast",
+      "name": "Google Imagen4 Fast",
+      "provider": "google",
+      "provider_name": "Google",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image, what you want the final edited image to look like."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "google-imagen4-ultra",
+      "name": "Google Imagen4 Ultra",
+      "provider": "google",
+      "provider_name": "Google",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image, what you want the final edited image to look like."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "sdxl-image",
+      "name": "Sdxl Image",
+      "provider": "stability",
+      "provider_name": "Stability AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "bytedance-seedream-v4",
+      "name": "Bytedance Seedream v4",
+      "provider": "bytedance",
+      "provider_name": "ByteDance",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "4:3",
+            "2:3",
+            "3:2",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1K",
+            "2K",
+            "4K"
+          ],
+          "description": "Resolution of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "hunyuan-image-2.1",
+      "name": "Hunyuan Image 2.1",
+      "provider": "hunyuan",
+      "provider_name": "Hunyuan",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "chroma-image",
+      "name": "Chroma Image",
+      "provider": "stability",
+      "provider_name": "Stability AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-redux",
+      "name": "Flux Redux",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image (max 1500 characters)."
+        },
+        "image_url": {
+          "type": "string",
+          "description": "URL of the input image used to generate image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "3:2",
+            "2:3",
+            "21:9",
+            "9:21"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": true,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-krea-dev",
+      "name": "Flux Krea Dev",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. The length of the prompt must be between 2 and 3000 characters."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "3:2",
+            "2:3",
+            "21:9",
+            "9:21"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "perfect-pony-xl",
+      "name": "Perfect Pony Xl",
+      "provider": "stability",
+      "provider_name": "Stability AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "neta-lumina",
+      "name": "Neta Lumina",
+      "provider": "stability",
+      "provider_name": "Stability AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "wan2.5-text-to-image",
+      "name": "Wan2.5 Text To Image",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "hunyuan-image-3.0",
+      "name": "Hunyuan Image 3.0",
+      "provider": "hunyuan",
+      "provider_name": "Hunyuan",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "leonardoai-phoenix-1.0",
+      "name": "Leonardoai Phoenix 1.0",
+      "provider": "leonardoai",
+      "provider_name": "Leonardo AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "4:3",
+            "4:5",
+            "5:4",
+            "2:3",
+            "3:2"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "leonardoai-lucid-origin",
+      "name": "Leonardoai Lucid Origin",
+      "provider": "leonardoai",
+      "provider_name": "Leonardo AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "4:3",
+            "4:5",
+            "5:4",
+            "2:3",
+            "3:2"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "reve-text-to-image",
+      "name": "Reve Text To Image",
+      "provider": "reve",
+      "provider_name": "Wavespeed",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "21:9",
+            "16:9",
+            "4:3",
+            "1:1",
+            "3:4",
+            "9:16",
+            "9:21"
+          ],
+          "description": "Aspect ratio of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "grok-imagine-text-to-image",
+      "name": "Grok Imagine Text To Image",
+      "provider": "grok",
+      "provider_name": "xAI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "9:16",
+            "16:9",
+            "2:3",
+            "3:2",
+            "1:1"
+          ],
+          "description": "Aspect ratio of the output image. Get 6 images each time."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "nano-banana-pro",
+      "name": "Nano Banana Pro",
+      "provider": "google",
+      "provider_name": "Google",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image, what you want the final edited image to look like."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "3:4",
+            "4:3",
+            "9:16",
+            "16:9",
+            "3:2",
+            "2:3",
+            "5:4",
+            "4:5",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1k",
+            "2k",
+            "4k"
+          ],
+          "description": "The target resolution of the generated image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "kling-o1-text-to-image",
+      "name": "Kling O1 Text To Image",
+      "provider": "kling",
+      "provider_name": "Kling AI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "2:3",
+            "3:2",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1k",
+            "2k"
+          ],
+          "description": "The target resolution of the generated image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images generated in single request. Each number will charge separately"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "z-image-turbo",
+      "name": "Z Image Turbo",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-2-dev",
+      "name": "Flux 2 Dev",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-2-flex",
+      "name": "Flux 2 Flex",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "2:3",
+            "3:2"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1k",
+            "2k"
+          ],
+          "description": "The target resolution of the generated image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-2-pro",
+      "name": "Flux 2 Pro",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "2:3",
+            "3:2"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1k",
+            "2k"
+          ],
+          "description": "The target resolution of the generated image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "vidu-q2-text-to-image",
+      "name": "Vidu Q2 Text To Image",
+      "provider": "vidu",
+      "provider_name": "Vidu",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "2:3",
+            "3:2",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1k",
+            "2k",
+            "4k"
+          ],
+          "description": "The target resolution of the generated image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "bytedance-seedream-v4.5",
+      "name": "Bytedance Seedream V4.5",
+      "provider": "bytedance",
+      "provider_name": "ByteDance",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "4:3",
+            "3:4",
+            "2:3",
+            "3:2",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "quality": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "high"
+          ],
+          "description": "Quality of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "gpt-image-1.5",
+      "name": "Gpt Image 1.5",
+      "provider": "openai",
+      "provider_name": "OpenAI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "1:1",
+            "2:3",
+            "3:2"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "quality": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "description": "The quality of the generated image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "gpt-image-2",
+      "name": "Gpt Image 2",
+      "provider": "openai",
+      "provider_name": "OpenAI",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image. Up to 20,000 characters supported."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "1:1",
+            "16:9",
+            "9:16",
+            "4:3",
+            "3:4"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "1K",
+            "2K",
+            "4K"
+          ],
+          "description": "The target resolution of the generated image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": true
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "wan2.6-text-to-image",
+      "name": "Wan2.6 Text To Image",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "width": {
+          "type": "int",
+          "description": "Width of the output image."
+        },
+        "height": {
+          "type": "int",
+          "description": "Height of the output image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "qwen-text-to-image-2512",
+      "name": "Qwen Text To Image 2512",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image, what you want the final edited image to look like."
+        },
+        "width": {
+          "type": "integer",
+          "description": "Width of the image in pixels"
+        },
+        "height": {
+          "type": "integer",
+          "description": "Height of the image in pixels"
+        }
+      },
+      "supports": {
+        "aspect_ratio": false,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-2-klein-4b",
+      "name": "Flux 2 Klein 4b",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "3:4",
+            "4:3",
+            "21:9",
+            "9:21"
+          ],
+          "description": "The aspect ratio of the generated image"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "flux-2-klein-9b",
+      "name": "Flux 2 Klein 9b",
+      "provider": "blackforest",
+      "provider_name": "Black Forest Labs",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "3:4",
+            "4:3",
+            "21:9",
+            "9:21"
+          ],
+          "description": "The aspect ratio of the generated image"
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "z-image-base",
+      "name": "Z Image Base",
+      "provider": "alibaba",
+      "provider_name": "Alibaba",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image."
+        },
+        "image_url": {
+          "type": "string",
+          "description": "URL of the input image."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "3:4",
+            "4:3",
+            "21:9",
+            "9:21"
+          ],
+          "description": "The aspect ratio of the generated image"
+        },
+        "strength": {
+          "type": "int",
+          "description": "Controls the strength of the transformation. Higher values produce outputs more different from the input image."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": true,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    },
+    {
+      "id": "minimax-image-01",
+      "name": "MiniMax Image 01",
+      "provider": "minimax",
+      "provider_name": "Minimax",
+      "capability": "image_generation",
+      "params": {
+        "prompt": {
+          "type": "string",
+          "description": "Text prompt describing the image to generate (max 1500 characters)."
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "3:2",
+            "2:3",
+            "21:9"
+          ],
+          "description": "Aspect ratio of the output image."
+        },
+        "num_images": {
+          "type": "int",
+          "description": "Number of images to generate in a single request."
+        }
+      },
+      "supports": {
+        "aspect_ratio": true,
+        "negative_prompt": false,
+        "seed": false,
+        "image_input": false,
+        "resolution": false
+      },
+      "cost_usd": null,
+      "latency_p50_s": null,
+      "quality_score": null,
+      "historical_success_rate": null
+    }
+  ]
+}
